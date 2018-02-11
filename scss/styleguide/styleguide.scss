@@ -1,0 +1,12 @@
+/* 
+ *Set all partials to exclude in Styleguide project 
+ */
+
+
+
+
+$include-debug : false;
+$include-styleguide : true!default;
+@import "../partials"; 
+
+@import "_styleguide"; 

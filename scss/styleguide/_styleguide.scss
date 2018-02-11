@@ -1,0 +1,444 @@
+@if $include-styleguide == true {
+
+// @import "prism.scss";
+
+.stcontainer {
+    @include max-width();
+    background-color: $white;
+    padding: $baselineheight $gutterwidth;
+    border: 1px solid $lightgrey;
+    border-radius: $radius;
+    margin-bottom: $baselineheight;
+}
+
+.sttitle {
+        display: block;
+        border-bottom: 1px solid $color-borders;
+        margin-bottom: $baselineheight * 2;
+        font-size: fs(x-small);
+        line-height: 2;
+        color: $grey;
+    }
+
+
+    .stcolor {
+        height: 100px;
+        position: relative;
+        color: $white;
+        font-size: fs(big);
+        text-align: center;
+        padding-top: $gutterwidth;
+         &:before {
+            content: attr(data-color);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -25%);
+            font-size: fs(small);
+            width: 95%;
+            text-align: center;
+        }
+    }
+
+// Typography
+.sttitlebag {
+    &:before {
+        content: attr(data-header);
+        display: inline-block;
+        font-size: fs(x-small);
+        margin-right: 1em;
+        border: 1px solid darken($lightgrey, 10);
+        border-radius: $radius;
+        line-height: 1.6;
+        width: 1.6em;
+        text-align: center;
+        font-family: $basefont;
+        background-color: $lightgrey;
+        color: $grey;
+        vertical-align: middle;
+    }
+}
+
+// Fonts
+.basefont {
+    font-family: $basefont;
+    &:after {
+        content: " #{$basefont}";
+    }
+}
+.altfont {
+    font-family: $altfont;
+    &:after {
+        content: " #{$altfont}";
+    }
+}
+.codefont {
+    font-family: $codefont;
+    &:after {
+        content: " #{$codefont}";
+    }
+}
+
+[class^="grid--item-"], [class*=" grid--item-"] {
+    min-height: 100px;
+}
+
+.alert--myawesomealert { // Always BEM in mind
+   @extend %alert; // Extend the block here
+   background-color: hotpink;
+   color: firebrick;
+}
+
+.stfontblock {
+    display: inline-block;
+    border: 1px solid $lightgrey;
+    border-radius: $radius;
+    line-height: 1;
+    padding: ($gutterwidth / 2) ($gutterwidth / 4);
+    margin-right: .5em;
+    font-size: fs(huge);
+    span {
+        display: block;
+        text-align: center;
+        font-size: fs(normal);
+    }
+}
+
+.sticons {
+    border: 1px solid $lightgrey;
+    padding: .5em;
+    width: 180px;
+    margin-bottom: $gutterwidth / 2;
+    border-radius: $radius;
+    display: inline-block;
+    text-align: center;
+    small {
+        display: block;
+        font-weight: bold;
+    }
+}
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0 1.5em;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #a67f59;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+/*------------------------------------*\
+    $BLOCKS
+\*------------------------------------*/
+/*
+ * We add here differents blocks in the layout,
+ * like: small blocks, centered blocks, and so.
+
+
+    <div class="block">
+        <div class="block__title">
+
+        </div>
+        <div class="block__body">
+
+        </div>
+    </div>
+
+
+*/
+.block {
+    max-width: 100%;
+    margin-bottom: $gutterwidth;
+    background-color: $white;
+    position: relative;
+    &--hasfooter { padding-bottom: 4em; }
+
+    &--collapse { margin-bottom: 0; }
+
+    &--highlight {
+        .block__title {
+            background-color: $color-brand;
+            color: $white;
+        }
+    }
+
+    &--current {
+    }
+
+    &--bordertop { border-top: 5px solid $color-brand; }
+
+    /* Block Title */
+    &__title {
+        width: 100%;
+        background-color: $white;
+        padding: ($gutterwidth / 2) $gutterwidth;
+        font-size: fs(big);
+        font-weight: bold;
+        color: $color-secondary;
+        border-bottom: 1px solid $lightgrey;
+
+        display: flex;
+        align-items: center;
+
+        &.center {
+            // Centering content
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        p {
+            margin: 0;
+            a { font-weight: normal; }
+        }
+
+        .js-collapse & { border-bottom: none; }
+        &--white {
+            border-bottom: 1px solid $lightgrey;
+            background-color: $white !important;
+            color: $textcolor !important;
+        }
+
+        &--center {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__subtitle {
+        @extend .block__title;
+        border: none;
+        padding: ($gutterwidth / 2) ($gutterwidth * 2);
+        &.block__subtitle--white {
+            background-color: $white;
+            color: $textcolor;
+        }
+    }
+
+    /* Block Info */
+    &__info {
+        padding: ($gutterwidth / 2) ($gutterwidth * 2);
+        margin-left: auto;
+        color: $color-secondary;
+        background-color: $white;
+        padding: 0 5px;
+        border-radius: $radius;
+        font-size: fs(small);
+        margin-top: 3px;
+        text-transform: none;
+        line-height: 1.5;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 5px;
+        &:hover, &:visited {
+            text-decoration: none;
+            color: $color-secondary;
+        }
+        button {
+            margin-top: -4px;
+        }
+
+        &--group {
+            float: right;
+            padding: 3px 5px;
+            margin-left: $gutterwidth;
+            border-radius: $radius;
+            font-size: fs(small);
+            line-height: 1.5;
+            text-decoration: none;
+            display: inline-block;
+            &:hover, &:visited {
+                text-decoration: none;
+            }
+            .btn { line-height: 1.8; }
+        }
+        &--success { color: $color-success; }
+        &--warning { color: $color-warning; }
+        &--error { color: $color-error; }
+        &--info { color: $color-info; }
+        &.block__subtitle--white {
+            background-color: $white;
+            color: $textcolor;
+        }
+    }
+    /* Block body */
+    &__body {
+        padding: $gutterwidth;
+        background-color: $white;
+        position: relative;
+        @extend %clearfix;
+
+        fieldset { border: none; }
+        &--smallpadding { padding: $gutterwidth / 2; }
+    }
+
+    &__options {
+        .wrapper { padding: ($gutterwidth / 2) $gutterwidth; }
+        a:last-child { margin-top: $gutterwidth; }
+    }
+
+    &-bg {
+        max-width: 50%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    // For when the container is a block--white
+    &--whitebg {
+        border-top: 1px solid rgba(100, 100, 100, 0.1);
+        > .block__title {
+            border-bottom: 1px solid $lightgrey;
+            background-color: $white;
+            color: $textcolor;
+        }
+        &.block--highlight {
+            .block__title {
+                background-color: $color-brand;
+                color: $white;
+            }
+        }
+        &.block--bordertop {
+            border-top: 5px solid $color-brand;
+        }
+    }
+
+    &__footer {
+        position: absolute;
+        bottom: $gutterwidth / 2;
+        width: 100%;
+        padding: $gutterwidth / 4;
+    }
+}
+
+} // if
